@@ -12,8 +12,8 @@ import pandas as pd
 import joblib
 
 # Load the saved model and encoder
-model_path = joblib.load('battery_encoder.joblib')
-label_path= joblib.load('label_encoder.joblib')
+model = joblib.load('battery_encoder.joblib')
+le= joblib.load('label_encoder.joblib')
 
 st.title("EV Battery Safety Predictor")
 st.markdown("Enter battery details below to assess the risk of failure.")
