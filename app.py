@@ -12,19 +12,22 @@ import pandas as pd
 import joblib
 import os
 
-# Robust loading: Check if file exists first
+# DEBUGGING: List all files in the current directory
+st.write("Files found in current directory:", os.listdir("."))
+
+# Define paths
 model_path = 'battery_model.joblib'
 encoder_path = 'label_encoder.joblib'
 
+# Check if files exist
 if os.path.exists(model_path) and os.path.exists(encoder_path):
     model = joblib.load(model_path)
     le = joblib.load(encoder_path)
+    st.success("Model loaded successfully!")
 else:
-    st.error(f"Model files not found! Please ensure {model_path} is in the repository.")
+    st.error(f"STILL MISSING: Looking for {model_path} and {encoder_path}")
+    st.info("Make sure you have uploaded these files to your GitHub repository.")
     st.stop()
-
-st.title("EV Battery Safety Predictor")
-# ... rest of your UI code remains the same ...
 
 # User Inputs
 col1, col2 = st.columns(2)
