@@ -10,13 +10,21 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
-# Load the saved model and encoder
-model = joblib.load('battery_encoder.joblib')
-le= joblib.load('label_encoder.joblib')
+# Robust loading: Check if file exists first
+model_path = 'battery_model.joblib'
+encoder_path = 'label_encoder.joblib'
+
+if os.path.exists(model_path) and os.path.exists(encoder_path):
+    model = joblib.load(model_path)
+    le = joblib.load(encoder_path)
+else:
+    st.error(f"Model files not found! Please ensure {model_path} is in the repository.")
+    st.stop()
 
 st.title("EV Battery Safety Predictor")
-st.markdown("Enter battery details below to assess the risk of failure.")
+# ... rest of your UI code remains the same ...
 
 # User Inputs
 col1, col2 = st.columns(2)
