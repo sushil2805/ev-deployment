@@ -12,7 +12,7 @@ import pandas as pd
 import joblib
 
 # Load the saved model and encoder
-model = joblib.load('battery.joblib')
+model = joblib.load('battery_encoder.joblib')
 le = joblib.load('label_encoder.joblib')
 
 st.title("EV Battery Safety Predictor")
